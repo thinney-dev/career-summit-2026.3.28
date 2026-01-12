@@ -9,15 +9,23 @@ const StickyFooter = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-t border-border p-3 lg:hidden">
-      <div className="flex gap-2 max-w-md mx-auto">
+    <div 
+      className="fixed bottom-0 left-0 right-0 z-50 p-4 lg:hidden"
+      style={{
+        background: "linear-gradient(180deg, hsl(220 40% 6% / 0.9) 0%, hsl(220 45% 4% / 0.98) 100%)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        borderTop: "1px solid hsl(45 40% 50% / 0.1)",
+      }}
+    >
+      <div className="flex gap-3 max-w-md mx-auto">
         <a
           href="https://forms.google.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 btn-gold flex items-center justify-center gap-2 text-sm py-3"
+          className="flex-1 btn-gold flex items-center justify-center gap-2 text-sm py-3.5"
         >
-          <span className="text-xs bg-accent-foreground/20 px-2 py-0.5 rounded">
+          <span className="text-xs px-2 py-0.5 rounded bg-black/20">
             簡単1分
           </span>
           <span>ENTRYはこちら</span>
@@ -25,9 +33,9 @@ const StickyFooter = () => {
         </a>
         <button
           onClick={scrollToCampaign}
-          className="btn-outline-gold text-xs py-3 px-4 whitespace-nowrap"
+          className="btn-outline-gold text-xs py-3.5 px-5 whitespace-nowrap"
         >
-          キャンペーン実施中
+          キャンペーン
         </button>
       </div>
     </div>

@@ -29,27 +29,36 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-20 px-4">
+    <section id="features" className="py-32 md:py-40 px-4">
       <div className="container max-w-4xl mx-auto">
         <p className="section-subtitle">FEATURES</p>
         <h2 className="section-title">
           イベントの<span className="gradient-text">特徴</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
+        
+        <div className="divider-gold w-24 mx-auto mb-8" />
+        
+        <p className="text-center text-muted-foreground mb-16 max-w-lg mx-auto leading-relaxed">
           キャリアサミット2026は、上位大学生だけが参加できる
           プレミアムな就活イベントです
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="card-premium group hover:border-accent/50 transition-all duration-300"
+              className="card-premium group hover:glow-gold transition-all duration-500"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                <feature.icon className="w-6 h-6 text-accent" />
+              <div 
+                className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500"
+                style={{
+                  background: "linear-gradient(135deg, hsl(220 40% 15% / 0.8) 0%, hsl(220 35% 10% / 0.6) 100%)",
+                  border: "1px solid hsl(45 50% 50% / 0.2)",
+                }}
+              >
+                <feature.icon className="w-7 h-7 gold-icon" />
               </div>
-              <h3 className="text-lg font-bold mb-2 font-serif">
+              <h3 className="text-xl font-bold mb-3 font-serif text-foreground">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">

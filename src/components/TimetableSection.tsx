@@ -14,41 +14,58 @@ const schedule = [
 
 const TimetableSection = () => {
   return (
-    <section id="timetable" className="py-20 px-4 bg-card/50">
-      <div className="container max-w-2xl mx-auto">
+    <section id="timetable" className="py-32 md:py-40 px-4 relative">
+      {/* Subtle background variation */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 100% 50% at 50% 50%, hsl(220 45% 8%) 0%, transparent 70%)",
+        }}
+      />
+      
+      <div className="container max-w-2xl mx-auto relative z-10">
         <p className="section-subtitle">TIMETABLE</p>
         <h2 className="section-title">
           タイム<span className="gradient-text">テーブル</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12">
+        
+        <div className="divider-gold w-24 mx-auto mb-8" />
+        
+        <p className="text-center text-muted-foreground mb-16 leading-relaxed">
           充実した1日をお約束します
         </p>
 
-        <div className="space-y-0">
-          {schedule.map((item, index) => (
-            <div
-              key={index}
-              className={`flex items-start gap-4 py-4 ${
-                index !== schedule.length - 1 ? "border-b border-border" : ""
-              }`}
-            >
-              <div className="flex items-center gap-2 min-w-[100px]">
-                <Clock className="w-4 h-4 text-accent" />
-                <span className="font-bold text-accent">{item.time}</span>
+        <div className="card-premium">
+          <div className="space-y-0">
+            {schedule.map((item, index) => (
+              <div
+                key={index}
+                className={`flex items-start gap-6 py-5 ${
+                  index !== schedule.length - 1 ? "border-b border-border/50" : ""
+                }`}
+              >
+                <div className="flex items-center gap-3 min-w-[120px]">
+                  <Clock className="w-4 h-4 gold-icon" />
+                  <span 
+                    className="font-bold text-lg"
+                    style={{ color: "hsl(45 70% 60%)" }}
+                  >
+                    {item.time}
+                  </span>
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground">{item.event}</p>
+                  {item.duration && (
+                    <p className="text-xs text-muted-foreground mt-1.5">
+                      {item.duration}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div className="flex-1">
-                <p className="font-medium">{item.event}</p>
-                {item.duration && (
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {item.duration}
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground mt-8">
+        <p className="text-center text-xs text-muted-foreground mt-10">
           ※スケジュールは変更される場合がございます
         </p>
       </div>
