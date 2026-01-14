@@ -21,7 +21,7 @@ const OverviewSection = () => {
           {/* Googleマップ埋め込み */}
           <div className="w-full h-48 bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.106828236237!2d135.4933703768393!3d34.70248537291913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e68d95e3a70b%3A0x1baec822e859c84a!2z44Kw44Op44Oz44OV44Ot44Oz44OIg!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2004.012623477482!2d135.49424264422314!3d34.703516742779094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e68f07000001%3A0xa684e6b145ca9d5!2z44Kw44Op44Oz44OV44Ot44Oz44OI5aSn6Ziq!5e0!3m2!1sja!2sjp!4v1768380844397!5m2!1sja!2sjp" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
