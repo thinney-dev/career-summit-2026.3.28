@@ -1,73 +1,88 @@
-import { Clock } from "lucide-react";
-
-const schedule = [
-  { time: "13:00", event: "受付開始", duration: "30分" },
-  { time: "13:30", event: "オープニング・イベント説明", duration: "15分" },
-  { time: "13:45", event: "企業プレゼンテーション", duration: "60分" },
-  { time: "14:45", event: "休憩", duration: "15分" },
-  { time: "15:00", event: "座談会セッション①", duration: "45分" },
-  { time: "15:45", event: "座談会セッション②", duration: "45分" },
-  { time: "16:30", event: "座談会セッション③", duration: "45分" },
-  { time: "17:15", event: "クロージング・懇親会", duration: "45分" },
-  { time: "18:00", event: "終了", duration: "" },
-];
-
 const TimetableSection = () => {
-  return (
-    <section id="timetable" className="py-32 md:py-40 px-4 relative">
-      {/* Subtle background variation */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 100% 50% at 50% 50%, hsl(220 45% 8%) 0%, transparent 70%)",
-        }}
-      />
-      
-      <div className="container max-w-2xl mx-auto relative z-10">
-        <p className="section-subtitle">TIMETABLE</p>
-        <h2 className="section-title">
-          タイム<span className="gradient-text">テーブル</span>
-        </h2>
-        
-        <div className="divider-gold w-24 mx-auto mb-8" />
-        
-        <p className="text-center text-muted-foreground mb-16 leading-relaxed">
-          充実した1日をお約束します
-        </p>
+  const schedule = [
+    {
+      time: "13:45",
+      title: "受付開始",
+      description: ""
+    },
+    {
+      time: "14:15",
+      title: "オープニングトーク",
+      description: ""
+    },
+    {
+      time: "14:25",
+      title: "企業様ごとのピッチ（1社5分）",
+      description: "各企業の事業内容や強み、本日の座談会で話せるテーマについてプレゼンいただきます。"
+    },
+    {
+      time: "15:20",
+      title: "少人数座談会（12分×5回）",
+      description: "学生数名と企業担当者による濃密な座談会。ローテーション形式で全ての企業と話せます。"
+    },
+    {
+      time: "16:35",
+      title: "懇親会",
+      description: "座談会よりもフランクな雰囲気で、社員様や他の参加学生と交流を深められます。"
+    },
+    {
+      time: "17:30",
+      title: "閉会",
+      description: ""
+    }
+  ];
 
-        <div className="card-premium">
-          <div className="space-y-0">
-            {schedule.map((item, index) => (
-              <div
-                key={index}
-                className={`flex items-start gap-6 py-5 ${
-                  index !== schedule.length - 1 ? "border-b border-border/50" : ""
-                }`}
-              >
-                <div className="flex items-center gap-3 min-w-[120px]">
-                  <Clock className="w-4 h-4 gold-icon" />
-                  <span 
-                    className="font-bold text-lg"
-                    style={{ color: "hsl(45 70% 60%)" }}
-                  >
-                    {item.time}
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <p className="font-medium text-foreground">{item.event}</p>
-                  {item.duration && (
-                    <p className="text-xs text-muted-foreground mt-1.5">
-                      {item.duration}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+  return (
+    <section className="py-12 px-4 md:px-8 bg-white">
+      <div className="max-w-3xl mx-auto">
+        
+        {/* セクションタイトル */}
+        <div className="text-center mb-10">
+           <h2 className="text-2xl md:text-3xl font-serif font-medium text-[#0B1E46] mb-3 tracking-wide">
+             タイムテーブル
+           </h2>
+           <p className="text-[#B8860B] font-serif italic text-xs tracking-widest uppercase mb-3">TIMETABLE</p>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground mt-10">
-          ※スケジュールは変更される場合がございます
-        </p>
+        {/* タイムテーブル本体 */}
+        <div className="space-y-8">
+            
+            {/* 第1部 */}
+            <div>
+                <div className="flex items-center gap-3 mb-4 pl-1">
+                    <div className="w-1 h-6 bg-[#B8860B]"></div>
+                    <h3 className="text-lg font-serif font-bold text-[#0B1E46]">第１部</h3>
+                </div>
+
+                <div className="flex flex-col border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    {schedule.map((item, index) => (
+                        <div key={index} className="flex border-b border-slate-100 last:border-b-0 min-h-[70px]">
+                            
+                            {/* ▼▼▼ 変更点：時刻エリアの幅を w-20 md:w-24 (約80〜96px) に狭めました ▼▼▼ */}
+                            <div className="w-20 md:w-24 bg-[#0B1E46] text-white flex items-center justify-center p-2 flex-shrink-0">
+                                <span className="font-serif text-lg md:text-xl font-medium tracking-wider">
+                                    {item.time}
+                                </span>
+                            </div>
+
+                            {/* ▼▼▼ 変更点：内容エリアを flex-1 で残りの幅いっぱいに広げました ▼▼▼ */}
+                            <div className="flex-1 bg-white p-3 md:p-5 flex flex-col justify-center">
+                                <h4 className="font-bold text-[#0B1E46] text-sm md:text-base leading-tight">
+                                    {item.title}
+                                </h4>
+                                {item.description && (
+                                    <p className="text-xs text-slate-500 leading-relaxed mt-1.5 font-medium">
+                                        {item.description}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+        </div>
+
       </div>
     </section>
   );
