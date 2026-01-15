@@ -11,9 +11,9 @@ import {
 const HeroSection = () => {
   // スライダー画像のパスを設定
   const slideImages = [
+    "/Herosection-4.png", 
     "/Herosection-1.png", 
     "/Herosection-2.png", 
-    "/Herosection-4.png", 
   ];
 
   const plugin = React.useRef(
