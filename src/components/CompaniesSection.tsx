@@ -4,37 +4,43 @@ const CompaniesSection = () => {
       id: 1, 
       name: "THINNEY 株式会社", 
       tags: ["金融・教育", "スタートアップ"], 
-      logoImage: "/logo-1.png", 
+      logoImage: "/logo-1.png",
+      url: "https://thinney.co.jp/TOP_thinney" // ← リンク先URLを追加
     },
     { 
       id: 2, 
       name: "社名 2", 
       tags: ["業界", "タグ"], 
-      logoText: "Logo 2" 
+      logoText: "Logo 2",
+      url: "https://google.com" // 仮のURL
     },
     { 
       id: 3, 
       name: "社名 3", 
       tags: ["業界", "タグ"], 
-      logoText: "Logo 3" 
+      logoText: "Logo 3",
+      url: "#" 
     },
     { 
       id: 4, 
       name: "社名 4", 
       tags: ["業界", "タグ"], 
-      logoText: "Logo 4" 
+      logoText: "Logo 4",
+      url: "#" 
     },
     { 
       id: 5, 
       name: "社名 5", 
       tags: ["業界", "タグ"], 
-      logoText: "Logo 5" 
+      logoText: "Logo 5",
+      url: "#" 
     },
     { 
       id: 6, 
       name: "社名 6", 
       tags: ["業界", "タグ"], 
-      logoText: "Logo 6" 
+      logoText: "Logo 6",
+      url: "#" 
     },
   ];
 
@@ -58,7 +64,6 @@ const CompaniesSection = () => {
              タップすると各企業HPへ遷移します
            </p>
 
-           {/* ▼▼▼ 変更点：PCでのサイズを md:text-lg から md:text-base に下げ、whitespace-nowrap で改行を禁止しました ▼▼▼ */}
            <p className="text-sm md:text-base font-bold text-[#0B1E46] leading-loose tracking-tight">
              <span className="inline-block whitespace-nowrap">業界最大手から、超優良企業、スタートアップまで</span>
              <br />
@@ -69,9 +74,12 @@ const CompaniesSection = () => {
         {/* 企業ロゴカード一覧 */}
         <div className="grid grid-cols-2 gap-4 mb-8">
           {companies.map((company: any) => (
-            <div 
+            <a // ← div を a タグに変更
               key={company.id} 
-              className="bg-white rounded-xl border border-slate-200 p-6 flex flex-col items-center justify-between shadow-sm hover:shadow-md transition-shadow aspect-square w-full cursor-pointer group"
+              href={company.url} // ← リンク先を指定
+              target="_blank" // ← 別タブで開く
+              rel="noopener noreferrer" // ← セキュリティ対策
+              className="bg-white rounded-xl border border-slate-200 p-6 flex flex-col items-center justify-between shadow-sm hover:shadow-md transition-shadow aspect-square w-full cursor-pointer group block" // blockを追加
             >
               <div className="flex-1 flex items-center justify-center w-full mb-3">
                 {company.logoImage ? (
@@ -100,7 +108,7 @@ const CompaniesSection = () => {
                     {company.name}
                  </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 

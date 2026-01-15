@@ -1,10 +1,18 @@
+import * as React from "react";
 import { UserCheck, Ticket, MessageCircle, Gift } from "lucide-react";
+import AutoScroll from "embla-carousel-auto-scroll";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const BenefitsSection = () => {
   const benefits = [
@@ -35,11 +43,16 @@ const BenefitsSection = () => {
     }
   ];
 
-  // 画像のパスリスト
-  const benefitImages = [
-    "/gift-1.png",
-    "/gift-2.png",
-  ];
+  const baseImages = ["/gift-1.png", "/gift-2.png", "/gift-3.png"];
+  const benefitImages = [...baseImages, ...baseImages, ...baseImages]; 
+
+  const plugin = React.useRef(
+    AutoScroll({ 
+      speed: 1,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
 
   return (
     <section className="py-10 px-4 md:px-8 bg-white relative">
@@ -60,19 +73,34 @@ const BenefitsSection = () => {
              クリックして詳細を確認できます
            </p>
 
-           {/* 特典イメージ画像（横並び2列・上下中央揃え） */}
-           <div className="grid grid-cols-2 gap-2 md:gap-4 w-full items-center">
-             {benefitImages.map((imgSrc, index) => (
-               // ▼ 変更点：背景色(bg-slate-50)、枠線(border...)、影(shadow-sm)を削除し、透明なコンテナにしました。
-               // rounded-lg と overflow-hidden は、ホバー時の拡大が綺麗に見えるよう残しています。
-               <div key={index} className="rounded-lg overflow-hidden">
-                 <img 
-                   src={imgSrc} 
-                   alt={`特典イメージ ${index + 1}`}
-                   className="w-full h-auto hover:scale-105 transition-transform duration-500"
-                 />
-               </div>
-             ))}
+           {/* 特典画像スライダー（回転寿司風） */}
+           <div className="w-full mb-6 relative">
+             <Carousel
+               plugins={[plugin.current]}
+               className="w-full"
+               opts={{
+                 align: "start",
+                 loop: true,
+                 dragFree: true,
+               }}
+             >
+               <CarouselContent className="-ml-4">
+                 {benefitImages.map((src, index) => (
+                   // ▼▼▼ 変更点1：画像の表示サイズを大きくしました（スマホで8割、PCで半分） ▼▼▼
+                   <CarouselItem key={index} className="pl-4 basis-[80%] md:basis-1/2">
+                     {/* ▼▼▼ 変更点2：枠線、背景、影、パディングを削除しました ▼▼▼ */}
+                     <div className="relative aspect-[16/9] w-full overflow-hidden">
+                       <img
+                         src={src}
+                         alt={`特典イメージ`}
+                         className="object-contain w-full h-full"
+                       />
+                     </div>
+                     {/* ▲▲▲ 変更点ここまで ▲▲▲ */}
+                   </CarouselItem>
+                 ))}
+               </CarouselContent>
+             </Carousel>
            </div>
 
         </div>

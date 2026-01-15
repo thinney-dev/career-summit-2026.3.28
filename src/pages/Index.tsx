@@ -86,7 +86,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="flex min-h-screen w-full bg-white font-sans text-[#0B1E46] selection:bg-purple-100 relative">
+    <div className="flex min-h-screen w-full bg-white font-sans text-[#0B1E46] selection:bg-purple-100 relative justify-center">
       
       {/* ▼ 背景画像（固定） */}
       <div 
@@ -99,10 +99,10 @@ const Index = () => {
       ></div>
 
       {/* ▼ 左カラム（Sticky配置） ▼ */}
-      {/* 修正：justify-between を削除し、ロゴのコンテナで位置を調整します */}
-      <aside className="hidden lg:flex flex-1 sticky top-0 h-screen flex-col items-center z-10 px-6 py-8 xl:py-12">
+      {/* flex-1 を維持（比率1） */}
+      <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col items-center z-10 px-6 py-8 xl:py-12">
         
-        {/* ロゴエリア：flex-1 で余白を埋め、items-center justify-center でど真ん中に配置 */}
+        {/* ロゴエリア */}
         <div className="flex-1 flex items-center justify-center w-full">
             <img 
             src="/image_0.png" 
@@ -111,7 +111,7 @@ const Index = () => {
             />
         </div>
 
-        {/* 運営情報カード：flex-grow-0 (固定サイズ) */}
+        {/* 運営情報カード */}
         <div className="w-full flex justify-center pt-6">
             <CompanyInfoCard />
         </div>
@@ -119,7 +119,9 @@ const Index = () => {
 
 
       {/* ▼ 中央カラム（メインコンテンツ） ▼ */}
-      <main className="flex-1 lg:flex-1 relative z-20 shadow-2xl bg-white/60 backdrop-blur-md pb-32">
+      {/* 修正箇所：w-full max-w-4xl shrink-0 を削除し、flex-1 に変更 */}
+      {/* これにより、左:中:右 = 1:1:1 の比率になります */}
+      <main className="flex-1 lg:flex-1 min-w-0 relative z-20 shadow-2xl bg-white/60 backdrop-blur-md pb-32">
           
           <div id="top"><HeroSection /></div>
           
@@ -152,7 +154,8 @@ const Index = () => {
 
 
       {/* ▼ 右カラム（Sticky配置） ▼ */}
-      <aside className="hidden lg:flex flex-1 sticky top-0 h-screen flex-col justify-center pl-8 xl:pl-12 z-10">
+      {/* flex-1 を維持（比率1） */}
+      <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col justify-center pl-8 xl:pl-12 z-10">
         <div className="w-full max-w-xs space-y-10">
             {/* ナビゲーション */}
             <nav className="space-y-5 border-l-2 border-slate-300 pl-6">

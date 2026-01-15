@@ -1,6 +1,25 @@
+import * as React from "react";
 import { MapPin, Users, Ticket } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay"; 
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const HeroSection = () => {
+  // スライダー画像のパスを設定
+  const slideImages = [
+    "/Herosection-1.png", 
+    "/Herosection-2.png", 
+    "/Herosection-4.png", 
+  ];
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false })
+  );
+
   return (
     <section className="relative pt-12 pb-20 px-4 md:px-8 overflow-hidden">
       
@@ -25,56 +44,81 @@ const HeroSection = () => {
         </div>
 
         {/* イベントロゴ/タイトル */}
-        <div className="mb-10 animate-fade-in-up delay-100 w-full">
-           {/* ▼ 修正：フォントサイズを少し下げ、改行(<br/>)を入れました */}
+        <div className="mb-8 animate-fade-in-up delay-100 w-full">
            <h1 className="text-3xl md:text-5xl font-serif font-medium text-[#0B1E46] leading-tight tracking-wide">
              Career Summit<br/>
              <span className="text-4xl md:text-6xl font-bold inline-block mt-2">2026</span>
            </h1>
            
-           {/* ▼ 修正：サブタイトルのフォントサイズを調整し、スマホ等で自然に改行されるように戻しました */}
            <p className="mt-4 text-xs md:text-sm text-[#0B1E46] font-bold tracking-widest leading-relaxed">
              京阪神のトップ層が集う、完全招待制キャリアイベント
            </p>
         </div>
 
-        {/* キーワードタグ群（サイズ微調整） */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-5 mb-10 animate-fade-in-up delay-200">
+        {/* 写真スライダーエリア */}
+        <div className="w-full mb-10 animate-fade-in-up delay-150 relative">
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full shadow-xl rounded-none overflow-hidden border border-white/50"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {slideImages.map((src, index) => (
+                <CarouselItem key={index} className="basis-full">
+                  <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
+                    <img
+                      src={src}
+                      alt={`Slide ${index + 1}`}
+                      className="object-cover w-full h-full rounded-none hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* ▼▼▼ キーワードタグ群（1行表示・改行なし） ▼▼▼ */}
+        {/* flex-nowrap: 折り返し禁止, w-full: 幅いっぱい, gap-2: スマホ用の狭い間隔 */}
+        <div className="flex flex-nowrap justify-center items-center gap-2 md:gap-5 mb-10 animate-fade-in-up delay-200 w-full px-1">
             
             {/* Tag 1: 30名限定 */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white/80 backdrop-blur-sm border border-[#B8860B]/40 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="w-7 h-7 rounded-full bg-[#0B1E46] text-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B] group-hover:text-white transition-colors">
-                    <Users className="w-3.5 h-3.5" />
+            <div className="flex-shrink-0 flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 md:py-2.5 bg-white/80 backdrop-blur-sm border border-[#B8860B]/40 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-[#0B1E46] text-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B] group-hover:text-white transition-colors">
+                    <Users className="w-3 h-3 md:w-3.5 md:h-3.5" />
                 </div>
                 <div className="text-left">
-                    <p className="text-[9px] text-slate-500 font-sans tracking-wider uppercase leading-none mb-0.5">LIMIT</p>
-                    <p className="text-base md:text-lg font-serif font-bold text-[#0B1E46] leading-none">
+                    <p className="text-[8px] md:text-[9px] text-slate-500 font-sans tracking-wider uppercase leading-none mb-0.5">LIMIT</p>
+                    <p className="text-sm md:text-lg font-serif font-bold text-[#0B1E46] leading-none whitespace-nowrap">
                         30名限定
                     </p>
                 </div>
             </div>
 
             {/* Tag 2: 京阪神大 */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white/80 backdrop-blur-sm border border-[#B8860B]/40 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="w-7 h-7 rounded-full bg-[#0B1E46] text-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B] group-hover:text-white transition-colors">
-                    <MapPin className="w-3.5 h-3.5" />
+            <div className="flex-shrink-0 flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 md:py-2.5 bg-white/80 backdrop-blur-sm border border-[#B8860B]/40 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-[#0B1E46] text-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B] group-hover:text-white transition-colors">
+                    <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5" />
                 </div>
                 <div className="text-left">
-                    <p className="text-[9px] text-slate-500 font-sans tracking-wider uppercase leading-none mb-0.5">TARGET</p>
-                    <p className="text-base md:text-lg font-serif font-bold text-[#0B1E46] leading-none">
+                    <p className="text-[8px] md:text-[9px] text-slate-500 font-sans tracking-wider uppercase leading-none mb-0.5">TARGET</p>
+                    <p className="text-sm md:text-lg font-serif font-bold text-[#0B1E46] leading-none whitespace-nowrap">
                         京阪神大
                     </p>
                 </div>
             </div>
 
             {/* Tag 3: 招待制 */}
-            <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white/80 backdrop-blur-sm border border-[#B8860B]/40 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="w-7 h-7 rounded-full bg-[#0B1E46] text-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B] group-hover:text-white transition-colors">
-                    <Ticket className="w-3.5 h-3.5" />
+            <div className="flex-shrink-0 flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 md:py-2.5 bg-white/80 backdrop-blur-sm border border-[#B8860B]/40 rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-[#0B1E46] text-[#B8860B] flex items-center justify-center group-hover:bg-[#B8860B] group-hover:text-white transition-colors">
+                    <Ticket className="w-3 h-3 md:w-3.5 md:h-3.5" />
                 </div>
                 <div className="text-left">
-                    <p className="text-[9px] text-slate-500 font-sans tracking-wider uppercase leading-none mb-0.5">STYLE</p>
-                    <p className="text-base md:text-lg font-serif font-bold text-[#0B1E46] leading-none">
+                    <p className="text-[8px] md:text-[9px] text-slate-500 font-sans tracking-wider uppercase leading-none mb-0.5">STYLE</p>
+                    <p className="text-sm md:text-lg font-serif font-bold text-[#0B1E46] leading-none whitespace-nowrap">
                         招待制
                     </p>
                 </div>
