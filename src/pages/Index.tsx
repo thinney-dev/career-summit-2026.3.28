@@ -13,6 +13,7 @@ import OverviewSection from "@/components/OverviewSection";
 import FAQSection from "@/components/FAQSection";
 import CompanyInfoCard from "@/components/CompanyInfoCard";
 import StickyFooter from "@/components/StickyFooter";
+import MobileMenu from "@/components/MobileMenu"; // ▼ 追加
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("top");
@@ -88,6 +89,9 @@ const Index = () => {
   return (
     <div className="flex min-h-screen w-full bg-white font-sans text-[#0B1E46] selection:bg-purple-100 relative justify-center">
       
+      {/* ▼ スマホ用メニューボタン（ここに追加） */}
+      <MobileMenu />
+
       {/* ▼ 背景画像（固定） */}
       <div 
         className="fixed inset-0 z-0 opacity-100 pointer-events-none"
@@ -99,10 +103,7 @@ const Index = () => {
       ></div>
 
       {/* ▼ 左カラム（Sticky配置） ▼ */}
-      {/* flex-1 を維持（比率1） */}
       <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col items-center z-10 px-6 py-8 xl:py-12">
-        
-        {/* ロゴエリア */}
         <div className="flex-1 flex items-center justify-center w-full">
             <img 
             src="/image_0.png" 
@@ -110,8 +111,6 @@ const Index = () => {
             className="w-full max-w-[80%] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500"
             />
         </div>
-
-        {/* 運営情報カード */}
         <div className="w-full flex justify-center pt-6">
             <CompanyInfoCard />
         </div>
@@ -119,8 +118,6 @@ const Index = () => {
 
 
       {/* ▼ 中央カラム（メインコンテンツ） ▼ */}
-      {/* 修正箇所：w-full max-w-4xl shrink-0 を削除し、flex-1 に変更 */}
-      {/* これにより、左:中:右 = 1:1:1 の比率になります */}
       <main className="flex-1 lg:flex-1 min-w-0 relative z-20 shadow-2xl bg-white/60 backdrop-blur-md pb-32">
           
           <div id="top"><HeroSection /></div>
@@ -154,7 +151,6 @@ const Index = () => {
 
 
       {/* ▼ 右カラム（Sticky配置） ▼ */}
-      {/* flex-1 を維持（比率1） */}
       <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col justify-center pl-8 xl:pl-12 z-10">
         <div className="w-full max-w-xs space-y-10">
             {/* ナビゲーション */}
