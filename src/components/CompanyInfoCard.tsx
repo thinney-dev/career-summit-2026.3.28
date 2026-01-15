@@ -22,7 +22,7 @@ const CompanyInfoCard = () => {
                 
                 {/* 会社名リンク */}
                 <a 
-                    href="https://thinney.co.jp" 
+                    href="https://thinney.co.jp/TOP_thinney" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="block group/link transition-opacity hover:opacity-70 duration-300"
