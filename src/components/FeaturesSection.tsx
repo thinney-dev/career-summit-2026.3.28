@@ -1,77 +1,85 @@
-import { Users, Building2, Handshake } from "lucide-react";
+import { Users, Building2, TrendingUp } from "lucide-react";
+
+const features = [
+  {
+    number: "01",
+    title: "京阪神の学生限定",
+    description: "参加者を京都大学・大阪大学・神戸大学の学生に限定。同じような志を持つ、レベルの高い仲間と出会える貴重な機会です。",
+    icon: Users,
+  },
+  {
+    number: "02",
+    title: "厳選された超優良企業",
+    description: "業界をリードするトップ企業のみを厳選して招待。一度に複数の優良企業と深く接点を持てる効率的なイベントです。",
+    icon: Building2,
+  },
+  {
+    number: "03",
+    title: "早期内定に直結",
+    description: "通常の選考ルートとは異なる、イベント参加者限定の特別選考パスを用意。効率的に就職活動を進めることができます。",
+    icon: TrendingUp,
+  }
+];
 
 const FeaturesSection = () => {
-  const features = [
-    {
-      id: 1,
-      title: "京阪神の学生限定",
-      description: "参加者を京都大学・大阪大学・神戸大学の学生に限定。同じような志を持つ、レベルの高い仲間と出会える貴重な機会です。",
-      icon: Users
-    },
-    {
-      id: 2,
-      title: "厳選された超優良企業",
-      description: "業界をリードするトップ企業のみを厳選して招待。一度に複数の優良企業と深く接点を持てる効率的なイベントです。",
-      icon: Building2
-    },
-    {
-      id: 3,
-      title: "少人数制・対話型",
-      description: "30名限定の少人数制で、企業の方と着座でじっくり話せます。一方的な説明会ではなく、双方向の対話を通じて深い企業理解につながります。",
-      icon: Handshake
-    }
-  ];
-
   return (
-    // ▼ 変更1：上下の余白を py-20 から py-12 に削減しました ▼
-    <section className="py-12 px-6 md:px-10 bg-slate-50 relative overflow-hidden">
-      {/* 背景装飾 */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-amber-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-      </div>
-
-      <div className="max-w-4xl mx-auto relative z-10">
+    <section id="features" className="py-20 bg-gradient-to-b from-purple-50/50 to-white relative overflow-hidden">
+      {/* containerのpaddingを削除し、画像が端まで届くようにする */}
+      <div className="container mx-auto relative z-10 px-0 md:px-4">
         
-        {/* セクションタイトル */}
-        <div className="text-center mb-10">
-           <h2 className="text-2xl md:text-3xl font-bold text-[#0B1E46] mb-3 leading-tight">
-             本イベントが選ばれる<br />
-             <span className="inline-block mt-1">3つの理由</span>
-           </h2>
-           <p className="text-purple-600 font-bold uppercase tracking-widest text-xs">WHY OUR EVENT</p>
+        {/* ヘッダー部分（ここには左右のpaddingを入れる） */}
+        <div className="text-center mb-12 px-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#0B1E46] mb-4 leading-tight">
+            本イベントが選ばれる<br />
+            3つの理由
+          </h2>
+          <span className="text-purple-600 font-bold tracking-widest text-sm md:text-base uppercase">
+            WHY OUR EVENT
+          </span>
         </div>
 
-        {/* コンテンツエリア：画像（丸い枠）を削除し、テキスト中心のデザインに変更 */}
-        <div className="space-y-8">
+        {/* ▼▼▼ 修正箇所：メイン画像 ▼▼▼ */}
+        {/* 幅制限と角丸を解除し、横幅いっぱいに表示 */}
+        <div className="w-full mb-16">
+            <img 
+                src="/FeaturesSection-1.png" 
+                alt="京阪神の大学風景とキャンパスライフ" 
+                // rounded-xl と shadow-lg を削除
+                className="w-full h-auto object-cover"
+            />
+        </div>
+        {/* ▲▲▲ 修正ここまで ▲▲▲ */}
+
+        {/* 特徴カードリスト（ここにも左右のpaddingを入れる） */}
+        <div className="flex flex-col gap-6 max-w-4xl mx-auto px-4">
           {features.map((feature, index) => (
-            // ▼ 変更2：画像削除に伴い、シンプルなカード型レイアウトに変更 ▼
-            <div key={feature.id} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 relative group">
-              
-              {/* 背景の薄い番号 */}
-              <div className="absolute top-2 right-4 text-6xl font-black text-slate-100 opacity-50 select-none pointer-events-none font-serif z-0">
-                0{feature.id}
+            <div 
+              key={index}
+              className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden"
+            >
+              {/* 背景の透かし数字 */}
+              <div className="absolute top-2 right-4 text-[120px] font-serif font-bold text-slate-50/80 pointer-events-none select-none leading-none z-0">
+                {feature.number}
               </div>
 
-              <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-4">
-                 {/* アイコン */}
-                 <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-[#0B1E46] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                        <feature.icon className="w-6 h-6" strokeWidth={1.5} />
-                    </div>
-                 </div>
+              <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+                {/* アイコン */}
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-[#0B1E46] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </div>
+                </div>
 
-                 {/* テキスト */}
-                 <div className="flex-1">
-                    <h3 className="text-lg md:text-xl font-serif font-bold text-[#0B1E46] mb-2">
-                        {feature.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                        {feature.description}
-                    </p>
-                 </div>
+                {/* テキスト */}
+                <div className="pt-2">
+                  <h3 className="text-xl md:text-2xl font-serif font-bold text-[#0B1E46] mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed font-medium">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-
             </div>
           ))}
         </div>
