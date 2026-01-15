@@ -13,7 +13,7 @@ import OverviewSection from "@/components/OverviewSection";
 import FAQSection from "@/components/FAQSection";
 import CompanyInfoCard from "@/components/CompanyInfoCard";
 import StickyFooter from "@/components/StickyFooter";
-import MobileMenu from "@/components/MobileMenu"; // ▼ 追加
+import MobileMenu from "@/components/MobileMenu";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("top");
@@ -89,7 +89,7 @@ const Index = () => {
   return (
     <div className="flex min-h-screen w-full bg-white font-sans text-[#0B1E46] selection:bg-purple-100 relative justify-center">
       
-      {/* ▼ スマホ用メニューボタン（ここに追加） */}
+      {/* ▼ スマホ用メニューボタン */}
       <MobileMenu />
 
       {/* ▼ 背景画像（固定） */}
@@ -102,17 +102,27 @@ const Index = () => {
         }}
       ></div>
 
-      {/* ▼ 左カラム（Sticky配置） ▼ */}
-      <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col items-center z-10 px-6 py-8 xl:py-12">
-        <div className="flex-1 flex items-center justify-center w-full">
-            <img 
-            src="/image_0.png" 
-            alt="Career Summit 2026 Logo" 
-            className="w-full max-w-[80%] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500"
-            />
-        </div>
-        <div className="w-full flex justify-center pt-6">
-            <CompanyInfoCard />
+      {/* ▼▼▼ 左カラム（Sticky配置） ▼▼▼ */}
+      <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col justify-center items-center z-10 px-6">
+        
+        {/* 配置調整用コンテナ */}
+        {/* 高さ h-[75vh] に広げ、ロゴを少し上へ、カードをさらに下へ配置します */}
+        <div className="flex flex-col justify-between items-center w-full h-[75vh] min-h-[680px] py-10">
+            
+            {/* ロゴエリア */}
+            <div className="flex-1 flex items-center justify-center w-full">
+                <img 
+                src="/image_0.png" 
+                alt="Career Summit 2026 Logo" 
+                className="w-full max-w-[80%] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500"
+                />
+            </div>
+
+            {/* 運営会社情報 */}
+            {/* translate-y-12 (約48px) でさらに下に押し下げ、右側の「キャンペーンボタン」の底部に合わせます */}
+            <div className="w-full flex justify-center translate-y-12">
+                <CompanyInfoCard />
+            </div>
         </div>
       </aside>
 
@@ -145,6 +155,11 @@ const Index = () => {
 
           <div id="faq">
             <FAQSection />
+          </div>
+
+          {/* スマホ用 運営会社情報（lg:hidden） */}
+          <div className="lg:hidden w-full px-4 py-12 flex justify-center bg-slate-50/50">
+            <CompanyInfoCard />
           </div>
 
       </main>

@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# Career Summit 2026 Landing Page
 
-## Project info
+「Career Summit 2026」のランディングページプロジェクトです。
+京阪神の大学生（28卒）を対象としたキャリアイベントの告知・集客を目的としています。
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🛠 技術スタック
 
-## How can I edit this code?
+このプロジェクトは以下の技術で構築されています。
 
-There are several ways of editing your application.
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Component**: [shadcn/ui](https://ui.shadcn.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Carousel/Slider**: [Embla Carousel](https://www.embla-carousel.com/)
 
-**Use Lovable**
+## 🚀 開発環境のセットアップ
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 前提条件
+- Node.js (推奨: v18以上)
+- npm
 
-Changes made via Lovable will be committed automatically to this repo.
+### インストール手順
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+# 1. リポジトリのクローン
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. ディレクトリへ移動
+cd career-summit-landing
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. 依存関係のインストール
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. 開発サーバーの起動
 npm run dev
+
+### ビルドとデプロイ
+
+# ビルド（distフォルダが生成されます）
+npm run build
+
+# ESLintによるチェック
+npm run lint
+
+
+GitHubへプッシュすると、連携されているホスティングサービス（Cloudflare Pages等）へ自動デプロイされます。
+
+## 📂 プロジェクト構成
+
+主要なディレクトリとファイルの構成です。
+
+src/
+├── components/
+│   ├── ui/                 # shadcn/uiの基本コンポーネント (Button, Carousel, etc.)
+│   ├── BenefitsSection.tsx # 参加者特典 (無限スクロールスライダー含む)
+│   ├── CompaniesSection.tsx# 出展企業一覧
+│   ├── CompanyInfoCard.tsx # 運営会社情報カード (PC/SPで配置が変わります)
+│   ├── HeroSection.tsx     # ファーストビュー (画像スライダー)
+│   ├── MobileMenu.tsx      # スマホ用ハンバーガーメニュー
+│   ├── StickyFooter.tsx    # スマホ用追従ボタン
+│   └── ... (その他のセクション)
+├── pages/
+│   └── Index.tsx           # メインページ (レイアウト統合・スクロール監視)
+└── public/                 # 静的画像ファイル (ロゴ, 写真など)
+
 ```
 
-**Edit a file directly in GitHub**
+## 💡 主要機能と実装ポイント
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 1. 3カラムレイアウト (PC表示)
 
-**Use GitHub Codespaces**
+`src/pages/Index.tsx` にて実装されています。
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+* **左カラム**: ロゴ・運営情報 (Sticky配置)
+* **中央カラム**: メインコンテンツ (スクロールエリア)
+* **右カラム**: ナビゲーション・CVボタン (Sticky配置)
 
-## What technologies are used for this project?
+> **注意点**: 左カラムの `CompanyInfoCard` は、右カラムの「キャンペーン実施中」ボタンの底辺と位置が合うように、`min-h` と `translate-y` で高さ調整を行っています。
 
-This project is built with:
+### 2. カルーセル・スライダーの実装
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+以下のプラグインを使用しています。依存関係エラーが出た場合は `npm install` を確認してください。
 
-## How can I deploy this project?
+* **HeroSection**: `embla-carousel-autoplay` を使用し、自動で切り替わるスライドショー。
+* **BenefitsSection**: `embla-carousel-auto-scroll` を使用し、回転寿司のように常に流れ続ける無限スクロール仕様。
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### 3. レスポンシブ対応
 
-## Can I connect a custom domain to my Lovable project?
+* **Tailwindのブレークポイント**: `lg:` (1024px) を境界に、PC/スマホのレイアウトを切り替えています。
+* **スマホメニュー**: `MobileMenu.tsx` がオーバーレイで表示されます。
+* **運営情報カード**: PCでは左サイドバー下部、スマホではフッター直前のメインコンテンツ内に表示されます。
 
-Yes, you can!
+### 4. スクロール連動ナビゲーション
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+`IntersectionObserver` を使用し、現在表示されているセクションに応じて右サイドバーのメニューがハイライトされる仕組みになっています。
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📝 修正・運用の注意点
+
+* **画像追加**: 画像ファイルは `public` フォルダ直下に配置し、パスは `/image_name.png` で参照してください。
+* **新規セクション追加**: `src/components` にコンポーネントを作成し、`Index.tsx` に配置してください。その際、`sectionIds` 配列にもIDを追加することでナビゲーションと連動します。
+
+## 🤝 コントリビューション
+
+1. 変更を加える際は、必ずブランチを切って作業してください。
+2. `npm run build` が通ることを確認してからプッシュしてください。
+
+2026/01/15 from S.F
