@@ -11,24 +11,28 @@ const OverviewSection = () => {
       content: (
         <div className="space-y-4">
           <div>
-            <p className="font-bold mb-1">グランフロント大阪</p>
-            <p className="text-sm text-slate-500">〒530-0011 大阪府大阪市北区大深町3-1</p>
+            {/* ▼▼▼ 修正箇所：施設名・住所・アクセスを更新 ▼▼▼ */}
+            <p className="font-bold mb-1">ミーティングスペースAP大阪茶屋町</p>
+            <p className="text-sm text-slate-500">
+              〒530-0013 大阪府大阪市北区茶屋町１−２７ ABC-MART梅田ビル 8F
+            </p>
             <p className="text-xs text-[#B8860B] mt-1 flex items-center gap-1 font-bold">
               <MapPin className="w-3 h-3" />
-              大阪駅より徒歩7分（大阪駅直結）
+              大阪梅田駅 1分 / 大阪駅 3分
             </p>
           </div>
           {/* Googleマップ埋め込み */}
           <div className="w-full h-48 bg-slate-100 rounded-lg overflow-hidden border border-slate-200">
+            {/* ▼▼▼ 修正箇所：iframeのsrcをご指示のリンクに変更 ▼▼▼ */}
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2004.012623477482!2d135.49424264422314!3d34.703516742779094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e68f07000001%3A0xa684e6b145ca9d5!2z44Kw44Op44Oz44OV44Ot44Oz44OI5aSn6Ziq!5e0!3m2!1sja!2sjp!4v1768380844397!5m2!1sja!2sjp" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1640.0053472253137!2d135.49698449839477!3d34.7049102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e693c9434093%3A0x4ebbe9d36594c0a8!2z44Of44O844OG44Kj44Oz44Kw44K544Oa44O844K5QVDlpKfpmKrojLblsYvnlLo!5e0!3m2!1sja!2sjp!4v1769416781372!5m2!1sja!2sjp" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
               allowFullScreen={true} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              title="グランフロント大阪 地図"
+              title="ミーティングスペースAP大阪茶屋町 地図"
             ></iframe>
           </div>
         </div>
@@ -95,7 +99,6 @@ const OverviewSection = () => {
                   className={`flex flex-col md:flex-row py-6 border-b border-slate-100 last:border-0 ${index === 0 ? 'pt-0' : ''} ${index === overviewItems.length - 1 ? 'pb-0' : ''}`}
                 >
                   {/* ラベルエリア */}
-                  {/* ▼ whitespace-nowrap を追加して、幅が狭くても改行されないようにしました ▼ */}
                   <div className="w-full md:w-20 flex-shrink-0 mb-2 md:mb-0">
                     <h3 className="text-base font-bold text-[#0B1E46] flex items-start md:pt-0 h-full whitespace-nowrap">
                       {item.label}

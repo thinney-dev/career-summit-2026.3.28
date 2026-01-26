@@ -14,6 +14,7 @@ import FAQSection from "@/components/FAQSection";
 import CompanyInfoCard from "@/components/CompanyInfoCard";
 import StickyFooter from "@/components/StickyFooter";
 import MobileMenu from "@/components/MobileMenu";
+import CampaignSection from "@/components/CampaignSection";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("top");
@@ -24,7 +25,8 @@ const Index = () => {
       "top", 
       "features", 
       "companies", 
-      "timetable", 
+      "timetable",
+      "campaign",
       "benefits", 
       "voice", 
       "participate", 
@@ -80,8 +82,10 @@ const Index = () => {
     { id: "features", label: "イベントの特徴", en: "FEATURES" },
     { id: "companies", label: "出展企業", en: "COMPANIES" },
     { id: "timetable", label: "タイムテーブル", en: "TIMETABLE" },
-    { id: "benefits", label: "参加者特典", en: "BENEFITS" },
-    // ▼ 修正箇所: 「参加者の声」→「学生の声」に変更
+    { id: "campaign", label: "キャンペーン", en: "CAMPAIGN" },
+    // ▼▼▼ 修正箇所：文言変更 ▼▼▼
+    { id: "benefits", label: "参加者限定 特別ルート", en: "SPECIAL ROUTE" },
+    // ▲▲▲ 修正箇所 ▲▲▲
     { id: "voice", label: "学生の声", en: "VOICE OF STUDENTS" },
     { id: "participate", label: "参加方法", en: "HOW TO PARTICIPATE" },
     { id: "overview", label: "開催概要", en: "OVERVIEW" },
@@ -137,7 +141,11 @@ const Index = () => {
           <TargetAudienceSection />
           
           <div id="companies"><CompaniesSection /></div>
+          
           <div id="timetable"><TimetableSection /></div>
+
+          {/* キャンペーンセクション */}
+          <CampaignSection />
 
           <div id="benefits">
              <BenefitsSection />

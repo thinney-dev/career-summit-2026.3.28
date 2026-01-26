@@ -36,22 +36,10 @@ const BenefitsSection = () => {
       description: "座談会でアピールできた学生に対して、企業様から個人面談申請をイベント中に送ります。",
       icon: MessageCircle
     },
-    {
-      id: 4,
-      title: "Amazonギフト券",
-      description: "イベント参加でアマギフ1,000円分を最後にお渡しします（アンケートと引き換え）。",
-      // note プロパティを削除しました
-      icon: Gift
-    },
-    {
-      id: 5,
-      title: "友人紹介特典",
-      description: "ご友人の紹介で参加された場合、紹介した方とされた方「双方」にAmazonギフト券1,000円分を追加でプレゼントします！（上限なし！）",
-      icon: Users // 新しいアイコン
-    }
+    
   ];
 
-  const baseImages = ["/gift-1.png", "/gift-2.png", "/gift-3.png"];
+  const baseImages = [ "/gift-2.png", "/gift-3.png"];
   const benefitImages = [...baseImages, ...baseImages, ...baseImages]; 
 
   const plugin = React.useRef(
@@ -69,9 +57,9 @@ const BenefitsSection = () => {
         {/* セクションタイトル */}
         <div className="text-center mb-8">
            <h2 className="text-3xl md:text-4xl font-serif font-medium text-[#0B1E46] mb-2 tracking-wide">
-             参加者特典
+             参加者限定、特別ルート
            </h2>
-           <p className="text-[#B8860B] font-serif italic text-sm tracking-widest uppercase mb-6">BENEFITS</p>
+           <p className="text-[#B8860B] font-serif italic text-sm tracking-widest uppercase mb-6">Special Route</p>
            
            <p className="text-base md:text-lg font-bold text-[#0B1E46] mb-2">
              本気で就活に向き合うあなたを支援します。

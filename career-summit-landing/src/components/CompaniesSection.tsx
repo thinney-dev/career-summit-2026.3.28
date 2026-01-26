@@ -2,30 +2,30 @@ const CompaniesSection = () => {
   const companies = [
     { 
       id: 1, 
-      name: "RACE", 
+      name: "日本食研", 
       tags: ["業界", "タグ"], 
-      logoImage: "/logo-RACE.png",
-      url: "https://thinney.co.jp/TOP_thinney"
+      logoImage: "/logo-日本食研.png",
+      url: "#"
     },
     { 
       id: 2, 
-      name: "オリックス", 
+      name: "RACE", 
       tags: ["業界", "タグ"], 
-      logoImage: "/logo-オリックス.png",
+      logoImage: "/logo-RACE.png",
       url: "#"
     },
     { 
       id: 3, 
-      name: "日本食研", 
-      tags: ["業界", "タグ"], 
-      logoImage: "/logo-日本食研.png",
-      url: "#" 
-    },
-    { 
-      id: 4, 
       name: "NES", 
       tags: ["業界", "タグ"], 
       logoImage: "/logo-NES.png",
+      url: "#"
+    },
+    { 
+      id: 4, 
+      name: "社名 4", 
+      tags: ["業界", "タグ"], 
+      logoText: "Logo 4",
       url: "#" 
     },
     { 
@@ -37,10 +37,10 @@ const CompaniesSection = () => {
     },
     { 
       id: 6, 
-      name: "THINNEY 株式会社", 
-      tags: ["金融・教育", "スタートアップ"], 
-      logoImage: "/logo-1.png",
-      url: "https://thinney.co.jp/TOP_thinney" 
+      name: "社名 6", 
+      tags: ["業界", "タグ"], 
+      logoText: "Logo 6",
+      url: "#" 
     },
   ];
 

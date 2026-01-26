@@ -3,15 +3,14 @@ import { ChevronRight, Users, MapPin, Ticket } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-// カルーセル画像の配列（publicフォルダの画像）
+// ▼▼▼ 修正箇所：ここが [4, 1, 2] の順になっているか確認してください ▼▼▼
 const images = [
+  "/Herosection-4.png",
   "/Herosection-1.png",
-  "/Herosection-2.png",
-  "/Herosection-4.png"
+  "/Herosection-2.png"
 ];
 
 const HeroSection = () => {
-  // speedオプションを削除 (エラー回避)
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 3000, stopOnInteraction: false })
   ]);
@@ -26,20 +25,17 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center text-center">
         
-        {/* ▼▼▼ ヘッダーテキスト部分 ▼▼▼ */}
+        {/* ヘッダーテキスト部分 */}
         <div className="mb-10 flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-700 w-full">
           
-          {/* 「日本一」: 紺色 */}
           <h2 className="text-base md:text-lg font-serif font-medium text-[#0B1E46] tracking-[0.2em] mb-3 uppercase">
             日本一
           </h2>
           
-          {/* 「質の高い就活を」: 紺色 */}
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#0B1E46] leading-tight mb-5 drop-shadow-sm">
             質の高い就活を
           </h1>
           
-          {/* 副題: 紺色 & 1行表示 */}
           <div className="mt-1 w-full flex justify-center">
             <p className="text-[11px] sm:text-sm md:text-lg font-serif text-[#0B1E46] tracking-[0.1em] font-medium opacity-90 whitespace-nowrap">
               少人数だからこそ、優良企業と深く話せる座談会
@@ -49,7 +45,7 @@ const HeroSection = () => {
         </div>
 
 
-        {/* ▼▼▼ メインビジュアル ▼▼▼ */}
+        {/* メインビジュアル */}
         <div className="relative w-full max-w-4xl mx-auto mb-10 shadow-2xl overflow-hidden">
           
           {/* カルーセル */}
@@ -62,8 +58,7 @@ const HeroSection = () => {
                     alt={`Career Summit Scene ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
-                  {/* 画像全体を少しだけ暗くして落ち着かせる */}
-                  <div className="absolute inset-0 bg-[#0B1E46]/10"></div>
+                  {/* 画像を暗くするフィルターは削除済みです */}
                 </div>
               ))}
             </div>
@@ -71,7 +66,7 @@ const HeroSection = () => {
         </div>
 
 
-        {/* ▼▼▼ イベントの特徴（3つの丸） ▼▼▼ */}
+        {/* イベントの特徴（3つの丸） */}
         <div className="flex flex-wrap md:flex-nowrap justify-center gap-3 md:gap-4 mb-12 w-full max-w-4xl px-2">
           
           {/* Limit */}
@@ -109,7 +104,7 @@ const HeroSection = () => {
         </div>
 
 
-        {/* ▼▼▼ 修正箇所：3つの特権リスト（スマホでの1行表示対応） ▼▼▼ */}
+        {/* 3つの特権リスト */}
         <div className="w-full max-w-[480px] mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 px-2 md:px-0">
           
           {/* 見出し */}
@@ -126,9 +121,7 @@ const HeroSection = () => {
                
                {/* Item 1 */}
                <div className="flex items-baseline border-b border-slate-200/60 pb-2">
-                 {/* 番号: スマホではサイズを少し抑え(text-2xl), 余白を詰める(mr-3) */}
                  <span className="font-serif italic text-2xl md:text-3xl text-slate-300 mr-3 md:mr-5 font-light w-6 md:w-8 text-right shrink-0">1.</span>
-                 {/* 本文: 改行禁止(whitespace-nowrap), スマホではサイズ調整(text-lg) */}
                  <span className="text-lg md:text-xl font-bold text-[#0B1E46] tracking-wide font-sans text-left whitespace-nowrap">
                     早期選考
                  </span>
@@ -137,12 +130,10 @@ const HeroSection = () => {
                {/* Item 2 */}
                <div className="flex items-baseline border-b border-slate-200/60 pb-2">
                  <span className="font-serif italic text-2xl md:text-3xl text-slate-300 mr-3 md:mr-5 font-light w-6 md:w-8 text-right shrink-0">2.</span>
-                 {/* flex-nowrapで折り返し禁止 */}
                  <div className="flex items-center flex-nowrap gap-2 md:gap-3">
                     <span className="text-lg md:text-xl font-bold text-[#0B1E46] tracking-wide font-sans text-left whitespace-nowrap">
-                        海外研修
+                        選ばれし学生は海外渡航インターン
                     </span>
-                    {/* バッジ: paddingを微調整して1行に収まりやすくする */}
                     <span className="text-[10px] md:text-[11px] font-bold text-white bg-[#B8860B] px-2 md:px-3 py-1 rounded-full shadow-sm tracking-wide whitespace-nowrap shrink-0">
                         無料
                     </span>
@@ -153,13 +144,12 @@ const HeroSection = () => {
                <div className="flex items-baseline pt-1">
                  <span className="font-serif italic text-2xl md:text-3xl text-slate-300 mr-3 md:mr-5 font-light w-6 md:w-8 text-right shrink-0">3.</span>
                  <span className="text-lg md:text-xl font-bold text-[#0B1E46] tracking-wide font-sans text-left whitespace-nowrap">
-                    スカウト
+                    幹部候補生として入社確約
                  </span>
                </div>
 
           </div>
         </div>
-        {/* ▲▲▲ 修正ここまで ▲▲▲ */}
 
       </div>
     </section>
