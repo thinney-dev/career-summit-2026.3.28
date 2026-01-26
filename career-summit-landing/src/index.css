@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap');
+
+@layer base {
+  :root {
+    /* Navy-based premium color palette */
+    --background: 220 40% 6%;
+    --foreground: 45 20% 92%;
+
+    --card: 220 30% 10%;
+    --card-foreground: 45 20% 92%;
+
+    --popover: 220 30% 10%;
+    --popover-foreground: 45 20% 92%;
+
+    --primary: 220 50% 12%;
+    --primary-foreground: 45 40% 88%;
+
+    --secondary: 220 25% 14%;
+    --secondary-foreground: 45 20% 92%;
+
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 43 75% 58%;
+    --accent-foreground: 220 50% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 43 75% 58%;
+
+    --radius: 0.75rem;
+
+    /* Enhanced premium colors */
+    --navy-deep: 220 50% 5%;
+    --navy-medium: 220 45% 10%;
+    --navy-light: 220 35% 18%;
+    
+    /* Metallic gold palette */
+    --gold-dark: 38 70% 35%;
+    --gold: 43 75% 50%;
+    --gold-light: 45 80% 65%;
+    --gold-shine: 48 90% 75%;
+    
+    --silver: 220 10% 75%;
+    --silver-light: 220 10% 90%;
+
+    /* Glass effect colors */
+    --glass-bg: 220 40% 12% / 0.6;
+    --glass-border: 45 30% 70% / 0.15;
+    --glass-highlight: 45 50% 90% / 0.08;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 40% 6%;
+    --foreground: 45 20% 92%;
+    --card: 220 30% 10%;
+    --card-foreground: 45 20% 92%;
+    --popover: 220 30% 10%;
+    --popover-foreground: 45 20% 92%;
+    --primary: 220 50% 12%;
+    --primary-foreground: 45 40% 88%;
+    --secondary: 220 25% 14%;
+    --secondary-foreground: 45 20% 92%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 15% 55%;
+    --accent: 43 75% 58%;
+    --accent-foreground: 220 50% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 43 75% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-foreground font-sans antialiased;
+    font-family: 'Noto Sans JP', sans-serif;
+    
+    /* Radial gradient background with noise texture */
+    background: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse 80% 60% at 50% 40%, hsl(220 45% 12%) 0%, hsl(220 50% 6%) 50%, hsl(220 55% 3%) 100%);
+    background-blend-mode: overlay, normal;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif JP', serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Metallic gold gradient button */
+  .btn-gold {
+    @apply font-bold px-8 py-4 rounded-xl transition-all duration-500 relative overflow-hidden;
+    background: linear-gradient(135deg, 
+      hsl(38 70% 35%) 0%, 
+      hsl(43 80% 55%) 25%, 
+      hsl(48 90% 70%) 50%, 
+      hsl(43 80% 55%) 75%, 
+      hsl(38 70% 35%) 100%
+    );
+    background-size: 200% 200%;
+    color: hsl(220 50% 8%);
+    box-shadow: 
+      0 4px 20px -4px hsl(43 80% 50% / 0.4),
+      inset 0 1px 0 hsl(48 90% 80% / 0.5),
+      inset 0 -1px 0 hsl(38 70% 30% / 0.5);
+    text-shadow: 0 1px 0 hsl(48 90% 80% / 0.3);
+  }
+
+  .btn-gold:hover {
+    @apply scale-105;
+    background-position: 100% 100%;
+    box-shadow: 
+      0 8px 32px -4px hsl(43 80% 50% / 0.5),
+      inset 0 1px 0 hsl(48 90% 80% / 0.6),
+      inset 0 -1px 0 hsl(38 70% 30% / 0.5);
+  }
+
+  /* Metallic gold outline button */
+  .btn-outline-gold {
+    @apply font-bold px-8 py-4 rounded-xl transition-all duration-500 relative;
+    background: transparent;
+    border: 1px solid transparent;
+    background-image: 
+      linear-gradient(hsl(220 40% 8%), hsl(220 40% 8%)),
+      linear-gradient(135deg, hsl(38 70% 40%) 0%, hsl(48 90% 70%) 50%, hsl(38 70% 40%) 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    color: hsl(45 80% 65%);
+  }
+
+  .btn-outline-gold:hover {
+    background-image: 
+      linear-gradient(hsl(220 40% 12%), hsl(220 40% 12%)),
+      linear-gradient(135deg, hsl(43 80% 55%) 0%, hsl(48 90% 75%) 50%, hsl(43 80% 55%) 100%);
+    color: hsl(48 90% 75%);
+  }
+
+  /* Section title styles */
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold text-center mb-6;
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  .section-subtitle {
+    @apply text-xs uppercase tracking-[0.4em] text-center mb-3;
+    background: linear-gradient(135deg, hsl(38 70% 45%) 0%, hsl(48 90% 70%) 50%, hsl(38 70% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* Glassmorphism card */
+  .card-premium {
+    @apply rounded-2xl p-8 relative overflow-hidden;
+    background: linear-gradient(
+      135deg,
+      hsl(220 40% 12% / 0.7) 0%,
+      hsl(220 35% 8% / 0.6) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(45 40% 70% / 0.12);
+    box-shadow: 
+      0 8px 32px -8px hsl(220 50% 3% / 0.6),
+      inset 0 1px 0 hsl(45 50% 90% / 0.06);
+  }
+
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(45 60% 70% / 0.3) 50%, 
+      transparent 100%
+    );
+  }
+
+  /* Glass container */
+  .glass-container {
+    @apply rounded-2xl relative overflow-hidden;
+    background: linear-gradient(
+      180deg,
+      hsl(220 40% 14% / 0.5) 0%,
+      hsl(220 35% 8% / 0.4) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(45 40% 70% / 0.1);
+    box-shadow: 0 4px 24px -4px hsl(220 50% 3% / 0.5);
+  }
+
+  /* Tags with glass effect */
+  .tag-badge {
+    @apply inline-block px-4 py-1.5 text-sm font-medium rounded-full;
+    background: linear-gradient(
+      135deg,
+      hsl(220 40% 15% / 0.6) 0%,
+      hsl(220 35% 10% / 0.5) 100%
+    );
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(45 50% 60% / 0.2);
+    color: hsl(45 60% 70%);
+  }
+
+  /* Metallic gold text */
+  .gold-text {
+    background: linear-gradient(135deg, hsl(38 70% 45%) 0%, hsl(48 90% 70%) 50%, hsl(38 70% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, 
+      hsl(38 70% 40%) 0%, 
+      hsl(43 80% 55%) 20%, 
+      hsl(48 90% 72%) 50%, 
+      hsl(43 80% 55%) 80%, 
+      hsl(38 70% 40%) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-text 4s ease-in-out infinite;
+  }
+
+  @keyframes shimmer-text {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Gold icon glow */
+  .gold-icon {
+    color: hsl(45 80% 60%);
+    filter: drop-shadow(0 0 8px hsl(45 80% 50% / 0.4));
+  }
+
+  /* Divider line with gradient */
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(38 70% 40%) 20%, 
+      hsl(48 90% 70%) 50%, 
+      hsl(38 70% 40%) 80%, 
+      transparent 100%
+    );
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  /* Subtle glow effect */
+  .glow-gold {
+    box-shadow: 0 0 40px -10px hsl(45 80% 50% / 0.3);
+  }
+
+  /* Noise overlay utility */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+  }
+}
