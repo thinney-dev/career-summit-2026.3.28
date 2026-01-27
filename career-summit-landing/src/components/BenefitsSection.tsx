@@ -1,5 +1,4 @@
 import * as React from "react";
-// ▼▼▼ 変更点1: Usersアイコンを追加インポート ▼▼▼
 import { UserCheck, Ticket, MessageCircle, Gift, Users } from "lucide-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 
@@ -16,7 +15,6 @@ import {
 } from "@/components/ui/carousel";
 
 const BenefitsSection = () => {
-  // ▼▼▼ 変更点2: 特典リストを修正（特典4のnoteを削除し、特典5を追加） ▼▼▼
   const benefits = [
     {
       id: 1,
@@ -36,10 +34,11 @@ const BenefitsSection = () => {
       description: "座談会でアピールできた学生に対して、企業様から個人面談申請をイベント中に送ります。",
       icon: MessageCircle
     },
-    
   ];
 
+  // 画像は適宜 public フォルダ内の実際のファイル名に合わせてください
   const baseImages = [ "/gift-2.png", "/gift-3.png"];
+  // スクロールを滑らかにするために画像を複製
   const benefitImages = [...baseImages, ...baseImages, ...baseImages]; 
 
   const plugin = React.useRef(
@@ -57,7 +56,7 @@ const BenefitsSection = () => {
         {/* セクションタイトル */}
         <div className="text-center mb-8">
            <h2 className="text-3xl md:text-4xl font-serif font-medium text-[#0B1E46] mb-2 tracking-wide">
-             参加者限定、特別ルート
+             参加者限定 特別ルート
            </h2>
            <p className="text-[#B8860B] font-serif italic text-sm tracking-widest uppercase mb-6">Special Route</p>
            
@@ -69,7 +68,7 @@ const BenefitsSection = () => {
              クリックして詳細を確認できます
            </p>
 
-           {/* 特典画像スライダー（回転寿司風） */}
+           {/* 画像スライダー（回転寿司風） */}
            <div className="w-full mb-6 relative">
              <Carousel
                plugins={[plugin.current]}
@@ -130,7 +129,7 @@ const BenefitsSection = () => {
                     <div className="border-t border-[#C5A059]/20 pt-3 mt-1">
                         <p>{benefit.description}</p>
                         
-                        {/* noteが存在する場合のみ表示（現在は使用していませんが、コードとして残しておいても問題ありません） */}
+                        {/* noteがある場合のみ表示 */}
                         {benefit.note && (
                             <div className="mt-3 bg-[#FFF9E5] border border-[#FFE082] rounded-lg p-2 text-[#B8860B] font-bold text-[10px] md:text-xs text-center">
                                 {benefit.note}
