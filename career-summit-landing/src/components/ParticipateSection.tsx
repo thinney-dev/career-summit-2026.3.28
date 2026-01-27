@@ -29,12 +29,11 @@ const ParticipateSection = () => {
                 下のボタンをタップして申込フォームを記入・送信。
               </p>
               <Button 
-                /* ▼▼▼ 変更点：text-base を text-xl に変更してサイズを統一 ▼▼▼ */
                 className="w-full max-w-sm bg-purple-600 hover:bg-purple-500 text-white font-bold h-12 rounded shadow-md text-xl transition-transform hover:scale-105"
                 onClick={() => window.open('https://forms.google.com/your-form-url', '_blank')}
               >
                 ENTRYはこちら
-                <ExternalLink className="ml-2 w-5 h-5" /> {/* アイコンも少し大きくしました */}
+                <ExternalLink className="ml-2 w-5 h-5" />
               </Button>
            </div>
 
@@ -58,6 +57,10 @@ const ParticipateSection = () => {
                 onClick={() => window.open('#', '_blank')}
               >
                 <span>公式LINEを追加する</span>
+                {/* 注意: publicフォルダに LINElogo.png を配置してください。
+                   もし画像がない場合は、imgタグを削除してテキストのみにするか、
+                   MessageCircleなどのアイコンで代用してください。
+                */}
                 <img 
                   src="/LINElogo.png" 
                   alt="LINE" 
@@ -78,7 +81,7 @@ const ParticipateSection = () => {
                 個別事前選考面談
               </h3>
               <p className="text-sm text-slate-600 font-medium leading-relaxed max-w-md">
-                キャリアアドバイザーと1対1で選考対策や就活相談を行い、<br className="hidden md:block"/>
+                現役の４年生と1対1で選考対策や就活相談を行い、<br className="hidden md:block"/>
                 当日企業様に提出する推薦文を作成します。
               </p>
            </div>

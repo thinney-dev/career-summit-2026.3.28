@@ -13,6 +13,10 @@ const FAQSection = () => {
       answer: "無料です。お気軽にご参加ください。"
     },
     {
+      question: "事前選考の基準を教えてください。",
+      answer: "主に「社会人としての基礎的なマナー」と「就職活動への前向きな姿勢」を確認させていただきます。高度なスキルや実績を厳しく審査するものではありませんので、安心してご応募ください。"
+    },
+    {
       question: "オファーカードとは何ですか？",
       answer: "企業様が気になった学生に対して、特別ルートへ招待するオファーカードを渡す仕組みです。"
     },
@@ -28,6 +32,7 @@ const FAQSection = () => {
       question: "当日の持ち物は？",
       answer: "筆記用具、スマートフォンをお持ちください。"
     }
+    
   ];
 
   return (
@@ -43,18 +48,26 @@ const FAQSection = () => {
         </div>
 
         {/* アコーディオン（FAQリスト） */}
-        <div className="bg-slate-50 rounded-xl border border-slate-200 p-4 md:p-8">
-            <Accordion type="single" collapsible className="w-full space-y-2">
+        {/* ▼▼▼ 修正箇所：外側の枠線と背景色を削除 ▼▼▼ */}
+        <div className="">
+            <Accordion type="single" collapsible className="w-full space-y-0">
                 {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="bg-white border border-slate-200 rounded-lg px-4 shadow-sm data-[state=open]:ring-2 data-[state=open]:ring-[#B8860B]/20 transition-all">
-                    <AccordionTrigger className="py-4 hover:no-underline hover:text-[#B8860B] transition-colors text-left group">
-                        <span className="text-sm md:text-base font-bold text-[#0B1E46] group-hover:text-[#B8860B] flex gap-3 items-center">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0B1E46] text-white flex items-center justify-center text-[10px] font-serif group-hover:bg-[#B8860B] transition-colors">Q</span>
+                // ▼▼▼ 修正箇所：各項目の背景・枠を削除し、下線のみに変更 ▼▼▼
+                <AccordionItem 
+                    key={index} 
+                    value={`item-${index}`} 
+                    // border-bで下線を追加、last:border-noneで最後の線だけ消す
+                    className="border-b border-slate-100 last:border-none transition-all px-2"
+                >
+                    <AccordionTrigger className="py-5 hover:no-underline hover:text-[#B8860B] transition-colors text-left group">
+                        <span className="text-sm md:text-base font-bold text-[#0B1E46] group-hover:text-[#B8860B] flex gap-4 items-start md:items-center">
+                            {/* Qアイコンのデザインを少しシンプルに調整 */}
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0B1E46]/10 text-[#0B1E46] flex items-center justify-center text-xs font-serif font-bold group-hover:bg-[#B8860B]/10 group-hover:text-[#B8860B] transition-colors mt-0.5 md:mt-0">Q.</span>
                             {faq.question}
                         </span>
                     </AccordionTrigger>
-                    <AccordionContent className="pb-4 pt-0 text-sm text-slate-600 font-medium leading-relaxed pl-9">
-                        <span className="font-bold text-[#B8860B] mr-2">A.</span>
+                    <AccordionContent className="pb-6 pt-0 text-sm text-slate-600 font-medium leading-relaxed pl-10">
+                        <span className="font-bold text-[#B8860B] mr-3">A.</span>
                         {faq.answer}
                     </AccordionContent>
                 </AccordionItem>
