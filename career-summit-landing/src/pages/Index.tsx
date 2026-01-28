@@ -15,23 +15,16 @@ import CompanyInfoCard from "@/components/CompanyInfoCard";
 import StickyFooter from "@/components/StickyFooter";
 import MobileMenu from "@/components/MobileMenu";
 import CampaignSection from "@/components/CampaignSection";
+// Headerのインポートを削除
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("top");
 
-  // ▼▼▼ スクロール連動機能 ▼▼▼
+  // スクロール連動機能
   useEffect(() => {
     const sectionIds = [
-      "top", 
-      "features", 
-      "companies", 
-      "timetable",
-      "campaign",
-      "benefits", 
-      "voice", 
-      "participate", 
-      "overview", 
-      "faq"
+      "top", "features", "companies", "timetable", "campaign",
+      "benefits", "voice", "participate", "overview", "faq"
     ];
 
     const observerOptions = {
@@ -49,7 +42,6 @@ const Index = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-
     sectionIds.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -76,16 +68,13 @@ const Index = () => {
     }
   };
 
-  // ▼▼▼ ナビゲーション項目の設定 ▼▼▼
   const navItems = [
     { id: "top", label: "ページトップ", en: "TOP" },
     { id: "features", label: "イベントの特徴", en: "FEATURES" },
     { id: "companies", label: "出展企業", en: "COMPANIES" },
     { id: "timetable", label: "タイムテーブル", en: "TIMETABLE" },
     { id: "campaign", label: "キャンペーン", en: "CAMPAIGN" },
-    // ▼▼▼ 修正箇所：文言変更 ▼▼▼
     { id: "benefits", label: "参加者限定 特別ルート", en: "SPECIAL ROUTE" },
-    // ▲▲▲ 修正箇所 ▲▲▲
     { id: "voice", label: "学生の声", en: "VOICE OF STUDENTS" },
     { id: "participate", label: "参加方法", en: "HOW TO PARTICIPATE" },
     { id: "overview", label: "開催概要", en: "OVERVIEW" },
@@ -95,10 +84,10 @@ const Index = () => {
   return (
     <div className="flex min-h-screen w-full bg-white font-sans text-[#0B1E46] selection:bg-purple-100 relative justify-center">
       
-      {/* ▼ スマホ用メニューボタン */}
+      {/* スマホ用メニュー */}
       <MobileMenu />
 
-      {/* ▼ 背景画像（固定） */}
+      {/* 背景画像 */}
       <div 
         className="fixed inset-0 z-0 opacity-100 pointer-events-none"
         style={{
@@ -108,13 +97,9 @@ const Index = () => {
         }}
       ></div>
 
-      {/* ▼▼▼ 左カラム（Sticky配置） ▼▼▼ */}
+      {/* 左カラム */}
       <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col justify-center items-center z-10 px-6">
-        
-        {/* 配置調整用コンテナ */}
         <div className="flex flex-col justify-between items-center w-full h-[75vh] min-h-[680px] py-10">
-            
-            {/* ロゴエリア */}
             <div className="flex-1 flex items-center justify-center w-full">
                 <img 
                 src="/image_0.png" 
@@ -122,61 +107,37 @@ const Index = () => {
                 className="w-full max-w-[80%] object-contain drop-shadow-xl transform hover:scale-105 transition-transform duration-500"
                 />
             </div>
-
-            {/* 運営会社情報 */}
             <div className="w-full flex justify-center translate-y-12">
                 <CompanyInfoCard />
             </div>
         </div>
       </aside>
 
-
-      {/* ▼ 中央カラム（メインコンテンツ） ▼ */}
+      {/* メインコンテンツ */}
       <main className="flex-1 lg:flex-1 min-w-0 relative z-20 shadow-2xl bg-white/60 backdrop-blur-md pb-32">
           
+          {/* ▼▼▼ Headerタグを削除しました ▼▼▼ */}
+          
           <div id="top"><HeroSection /></div>
-          
           <div id="features"><FeaturesSection /></div>
-
           <TargetAudienceSection />
-          
           <div id="companies"><CompaniesSection /></div>
-          
           <div id="timetable"><TimetableSection /></div>
-
-          {/* キャンペーンセクション */}
           <CampaignSection />
-
-          <div id="benefits">
-             <BenefitsSection />
-          </div>
-
-          <div id="voice">
-            <VoiceSection />
-          </div>
-
-          <div id="participate">
-             <ParticipateSection />
-          </div>
-          
+          <div id="benefits"><BenefitsSection /></div>
+          <div id="voice"><VoiceSection /></div>
+          <div id="participate"><ParticipateSection /></div>
           <div id="overview"><OverviewSection /></div>
+          <div id="faq"><FAQSection /></div>
 
-          <div id="faq">
-            <FAQSection />
-          </div>
-
-          {/* スマホ用 運営会社情報（lg:hidden） */}
           <div className="lg:hidden w-full px-4 py-12 flex justify-center bg-slate-50/50">
             <CompanyInfoCard />
           </div>
-
       </main>
 
-
-      {/* ▼ 右カラム（Sticky配置） ▼ */}
+      {/* 右カラム */}
       <aside className="hidden lg:flex flex-1 min-w-0 sticky top-0 h-screen flex-col justify-center pl-8 xl:pl-12 z-10">
         <div className="w-full max-w-xs space-y-10">
-            {/* ナビゲーション */}
             <nav className="space-y-5 border-l-2 border-slate-300 pl-6">
             {navItems.map((item) => (
                 <button
@@ -196,7 +157,6 @@ const Index = () => {
             ))}
             </nav>
 
-            {/* CVボタン群 */}
             <div className="space-y-3 pt-4">
                 <Button 
                     className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold h-14 rounded shadow-lg transition-transform hover:scale-105 text-lg"
@@ -219,7 +179,6 @@ const Index = () => {
         </div>
       </aside>
 
-      {/* スマホ用追従ボタン */}
       <div className="lg:hidden">
         <StickyFooter />
       </div>

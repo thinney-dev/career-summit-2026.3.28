@@ -15,7 +15,8 @@ const HeroSection = () => {
   ]);
 
   return (
-    <section className="relative w-full pt-20 pb-16 overflow-hidden bg-gradient-to-b from-[#f8f9fa] via-white to-white">
+    // ▼▼▼ 変更箇所：pt-12 を pt-6 に変更（上部の余白を半分に） ▼▼▼
+    <section className="relative w-full pt-6 pb-16 overflow-hidden bg-gradient-to-b from-[#f8f9fa] via-white to-white">
       
       {/* 背景装飾 */}
       <div className="absolute inset-0 opacity-30 pointer-events-none" 
@@ -23,6 +24,16 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center text-center">
+        
+        {/* ▼▼▼ 変更箇所：mb-6 を mb-3 に変更（画像下の余白を半分に） ▼▼▼ */}
+        <div className="w-full flex justify-center mb-3 animate-in fade-in slide-in-from-top-4 duration-700">
+            <img
+            src="/LP_header_28.png"
+            alt="28卒限定"
+            className="h-20 md:h-32 w-auto object-contain"
+            />
+        </div>
+
         
         {/* ヘッダーテキスト部分 */}
         <div className="mb-10 flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-700 w-full">
@@ -129,16 +140,13 @@ const HeroSection = () => {
                <div className="flex items-start border-b border-slate-200/60 pb-2">
                  <span className="font-serif italic text-2xl md:text-3xl text-slate-300 mr-3 md:mr-5 font-light w-6 md:w-8 text-right shrink-0 leading-none mt-1">2.</span>
                  
-                 {/* ▼▼▼ 修正箇所：テキストとバッジを横並び(flex)にし、バッジを右側に独立配置 ▼▼▼ */}
                  <div className="flex items-center w-full">
-                    {/* テキスト部分：常に改行 */}
                     <p className="text-lg md:text-xl font-bold text-[#0B1E46] tracking-wide font-sans text-left leading-tight flex-1">
                         選ばれし学生は海外渡航
                         <br />
                         インターン
                     </p>
                     
-                    {/* バッジ部分：右側に配置 */}
                     <span className="ml-3 text-[10px] md:text-[11px] font-bold text-white bg-[#B8860B] px-3 py-1 rounded-full shadow-sm tracking-wide whitespace-nowrap shrink-0">
                         無料
                     </span>
