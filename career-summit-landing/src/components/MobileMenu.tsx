@@ -4,16 +4,14 @@ import { Menu, X } from "lucide-react";
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // メニュー項目の定義（PC版と合わせる）
+  // メニュー項目の定義
   const menuItems = [
     { id: "top", label: "ページトップ", en: "TOP" },
     { id: "features", label: "イベントの特徴", en: "FEATURES" },
     { id: "companies", label: "出展企業", en: "COMPANIES" },
     { id: "timetable", label: "タイムテーブル", en: "TIMETABLE" },
     { id: "campaign", label: "キャンペーン", en: "CAMPAIGN" },
-    // ▼▼▼ 修正箇所：文言変更 ▼▼▼
     { id: "benefits", label: "参加者限定 特別ルート", en: "SPECIAL ROUTE" },
-    // ▲▲▲ 修正箇所 ▲▲▲
     { id: "voice", label: "学生の声", en: "VOICE" },
     { id: "participate", label: "参加方法", en: "HOW TO PARTICIPATE" },
     { id: "overview", label: "開催概要", en: "OVERVIEW" },
@@ -38,7 +36,7 @@ const MobileMenu = () => {
     }
   };
 
-  // スクロール禁止制御（メニューが開いているときは背景をスクロールさせない）
+  // スクロール禁止制御
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -52,7 +50,7 @@ const MobileMenu = () => {
 
   return (
     <>
-      {/* ハンバーガーボタン（常時表示・右下または右上） */}
+      {/* ハンバーガーボタン */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed top-4 right-4 z-50 p-3 bg-[#0B1E46] text-white rounded-full shadow-lg lg:hidden hover:bg-[#0B1E46]/90 transition-colors"
@@ -98,10 +96,11 @@ const MobileMenu = () => {
             ))}
           </div>
           
-          {/* CVボタン（メニュー内にも配置） */}
+          {/* CVボタン */}
           <div className="mt-8 pb-8 space-y-4">
             <button
-                onClick={() => window.open('https://forms.google.com/your-form-url', '_blank')}
+                // ▼▼▼ リンク修正 ▼▼▼
+                onClick={() => window.open('https://forms.gle/9RX66kmnapDjiokf9', '_blank')}
                 className="w-full bg-purple-600 text-white font-bold py-4 rounded-lg shadow-md active:scale-95 transition-transform"
             >
                 ENTRYはこちら

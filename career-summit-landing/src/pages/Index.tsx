@@ -116,7 +116,7 @@ const Index = () => {
       {/* メインコンテンツ */}
       <main className="flex-1 lg:flex-1 min-w-0 relative z-20 shadow-2xl bg-white/60 backdrop-blur-md pb-32">
           
-          {/* ▼▼▼ Headerタグを削除しました ▼▼▼ */}
+          {/* Headerタグ削除済み */}
           
           <div id="top"><HeroSection /></div>
           <div id="features"><FeaturesSection /></div>
@@ -160,7 +160,8 @@ const Index = () => {
             <div className="space-y-3 pt-4">
                 <Button 
                     className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold h-14 rounded shadow-lg transition-transform hover:scale-105 text-lg"
-                    onClick={() => window.open('https://forms.google.com/your-form-url', '_blank')}
+                    // ▼▼▼ リンク修正 ▼▼▼
+                    onClick={() => window.open('https://forms.gle/9RX66kmnapDjiokf9', '_blank')}
                 >
                     <span className="bg-white text-purple-600 text-xs px-2 py-0.5 rounded font-bold mr-3">簡単1分</span>
                     ENTRYはこちら
@@ -170,7 +171,7 @@ const Index = () => {
                 <Button 
                     variant="outline"
                     className="w-full bg-white hover:bg-amber-50 text-[#0B1E46] border-amber-400 font-bold h-12 rounded shadow transition-colors"
-                    onClick={() => scrollToSection('participate')}
+                    onClick={() => scrollToSection('campaign')}
                 >
                     <span className="text-amber-600 mr-2">●</span>
                     キャンペーン実施中

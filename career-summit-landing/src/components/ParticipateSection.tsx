@@ -30,7 +30,8 @@ const ParticipateSection = () => {
               </p>
               <Button 
                 className="w-full max-w-sm bg-purple-600 hover:bg-purple-500 text-white font-bold h-12 rounded shadow-md text-xl transition-transform hover:scale-105"
-                onClick={() => window.open('https://forms.google.com/your-form-url', '_blank')}
+                // フォームのリンク（前回設定済み）
+                onClick={() => window.open('https://forms.gle/9RX66kmnapDjiokf9', '_blank')}
               >
                 ENTRYはこちら
                 <ExternalLink className="ml-2 w-5 h-5" />
@@ -54,13 +55,10 @@ const ParticipateSection = () => {
               
               <Button 
                 className="w-full max-w-sm bg-[#06C755] hover:bg-[#05b54d] text-white font-bold h-12 rounded shadow-md text-xl transition-transform hover:scale-105 pl-6 pr-4 flex justify-center items-center gap-2"
-                onClick={() => window.open('#', '_blank')}
+                // ▼▼▼ リンク修正：公式LINEのURLを設定 ▼▼▼
+                onClick={() => window.open('https://lin.ee/26VxKEf', '_blank')}
               >
                 <span>公式LINEを追加する</span>
-                {/* 注意: publicフォルダに LINElogo.png を配置してください。
-                   もし画像がない場合は、imgタグを削除してテキストのみにするか、
-                   MessageCircleなどのアイコンで代用してください。
-                */}
                 <img 
                   src="/LINElogo.png" 
                   alt="LINE" 
